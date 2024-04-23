@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "623679d4-475a-413e-be29-4d0437dc451f",
+		"name": "Angelus Bartender REST API",
+		"description": "# REST API Angelus Bartender Collection [🍹](https://coolsymbol.com/copy/Tropical_Drink_Emoji_Symbol_%F0%9F%8D%B9)\n\nHere you can find a the principals endpoints for:  \n\n- Create a user\n    \n- Get one user\n    \n- Login\n    \n- Search cocktails\n    \n- Save favorite cocktail\n    \n- Remove from favorite cocktail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13000243"
+	},
+	"item": [
+		{
+			"name": "Cocktails by User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{cocktails_url}}/cocktails/user?user=6",
+					"host": [
+						"{{cocktails_url}}"
+					],
+					"path": [
+						"cocktails",
+						"user"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "6"
+						}
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Search cocktails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{cocktails_url}}/cocktails?search=daiquiri",
+					"host": [
+						"{{cocktails_url}}"
+					],
+					"path": [
+						"cocktails"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "daiquiri"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cocktail detail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{cocktails_url}}/cocktails/detail?id=11003",
+					"host": [
+						"{{cocktails_url}}"
+					],
+					"path": [
+						"cocktails",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save user cocktail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 6,\n    \"cocktail_id\": \"12754\",\n    \"cocktail_name\":\"Sex on the Beach\",\n    \"cocktail_image\":\"https://www.thecocktaildb.com/images/media/drink/fi67641668420787.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{cocktails_url}}/cocktails",
+					"host": [
+						"{{cocktails_url}}"
+					],
+					"path": [
+						"cocktails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove user cocktail",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{cocktails_url}}/cocktails/17205/user/6",
+					"host": [
+						"{{cocktails_url}}"
+					],
+					"path": [
+						"cocktails",
+						"17205",
+						"user",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{user_url}}/user?user_id=6",
+					"host": [
+						"{{user_url}}"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Consuela\",\n    \"last_name\": \"Banana\",\n    \"email\": \"banana@gmail.com\",\n    \"password\": \"123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{user_url}}/register",
+					"host": [
+						"{{user_url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"banana@gmail.com\",\n    \"password\": \"123126\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{user_url}}/login",
+					"host": [
+						"{{user_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/",
+			"disabled": true
+		},
+		{
+			"key": "{{cocktails_url}}",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "cocktails_url",
+			"value": "http://localhost:8081"
+		},
+		{
+			"key": "user_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
